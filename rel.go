@@ -3,12 +3,14 @@ package rel
 import "reflect"
 
 type Var[T any] struct {
+	name           string
 	attributeNames []string
 	typ            reflect.Type
 }
 
-func NewVar[T any]() (v *Var[T]) {
+func NewVar[T any](name string) (v *Var[T]) {
 	v = new(Var[T])
+	v.name = name
 
 	var typ *T
 	v.typ = reflect.TypeOf(typ).Elem()
@@ -27,6 +29,10 @@ func (v *Var[T]) Tuple(value T) (tuple []any) {
 		tuple[i] = r.Field(i).Interface()
 	}
 	return tuple
+}
+
+func (v *Var[T]) Name() string {
+	return v.name
 }
 
 func (v *Var[T]) Dests(value *T) (dests []any) {

@@ -14,8 +14,8 @@ func Insert(p Person) (stmt string, params []any) {
 	return stmt, params
 }
 
-func InsertGeneric[T any](v *rel.Var[T], relName string, value T) (stmt string, params []any) {
-	stmt += fmt.Sprintf("INSERT INTO %s (%s)\n", relName, strings.Join(v.AttributeRef(), ", "))
+func InsertGeneric[T any](v *rel.Var[T], value T) (stmt string, params []any) {
+	stmt += fmt.Sprintf("INSERT INTO %s (%s)\n", v.Name(), strings.Join(v.AttributeRef(), ", "))
 	stmt += fmt.Sprintf("VALUES (%s)\n", strings.Join(v.Params("?"), ","))
 	params = v.Tuple(value)
 	return stmt, params

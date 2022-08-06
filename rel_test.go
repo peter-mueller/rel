@@ -11,7 +11,7 @@ type Person struct {
 	Age  int    `db:"age"`
 }
 
-var person = rel.NewVar[Person]()
+var person = rel.NewVar[Person]("person")
 
 func TestTuple(t *testing.T) {
 	p := Person{
