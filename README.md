@@ -1,4 +1,7 @@
-# rel
+# rel 
+
+> :construction: no stable api, just a playground for go database client alternatives
+
 Go database helper that maps structs to tuples borrowing method names from Tutorial D syntax
 
 *Usage example:*
