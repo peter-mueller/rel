@@ -10,6 +10,7 @@ type Person struct {
 	Age  int    `db:"age"`
 }
 
+// TODO: maybe include name in relation: rel.NewVar[Person]("person")
 var person = rel.NewVar[Person]()
 
 func Insert(p Person) (stmt string, params []any) {
